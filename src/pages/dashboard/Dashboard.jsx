@@ -14,6 +14,7 @@ import Departments from "../../components/dashboard/Departments";
 import QuickActions from "../../components/dashboard/QuickActions";
 import HospitalUpdates from "../../components/dashboard/HospitalUpdates";
 import Footer from "../../components/dashboard/Footer";
+import PatientOverviewChart from "../../components/dashboard/PatientOverviewChart";
 
 function Dashboard() {
     return (
@@ -65,6 +66,9 @@ function Dashboard() {
                     icon={FiCreditCard}
                     trend="+10.8%"
                 />
+            </div>
+            <div className="mt-6">
+                <PatientOverviewChart />
             </div>
             <QuickActions />
 
