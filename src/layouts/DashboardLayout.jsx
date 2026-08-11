@@ -1,54 +1,92 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+// import { Outlet } from "react-router-dom";
+
+// import Sidebar from "../components/dashboard/Sidebar";
+// import Header from "../components/dashboard/Header";
+
+// function DashboardLayout() {
+//     const [sidebarOpen, setSidebarOpen] =
+//         useState(false);
+
+//     const [darkMode, setDarkMode] = useState(() => {
+//         return localStorage.getItem("theme") === "dark";
+//     });
+
+//     useEffect(() => {
+//         if (darkMode) {
+//             document.documentElement.classList.add("dark");
+
+//             localStorage.setItem("theme", "dark");
+//         } else {
+//             document.documentElement.classList.remove("dark");
+
+//             localStorage.setItem("theme", "light");
+//         }
+//     }, [darkMode]);
+//     return (
+//         <div className="flex min-h-screen bg-slate-50 transition-colors duration-300 dark:bg-slate-950">
+
+//             <Sidebar
+//                 isOpen={sidebarOpen}
+//                 onClose={() =>
+//                     setSidebarOpen(false)
+//                 }
+//             />
+
+//             <div className="flex min-w-0 flex-1 flex-col">
+
+//                 <Header
+//                     onMenuClick={() =>
+//                         setSidebarOpen(true)
+//                     }
+//                     darkMode={darkMode}
+//                     setDarkMode={setDarkMode}
+//                 />
+
+//                 <main className="flex-1 p-4 transition-colors duration-300 sm:p-6 lg:p-8">
+//                     <Outlet />
+//                 </main>
+
+//             </div>
+
+//         </div>
+//     );
+// }
+
+// export default DashboardLayout;
+
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import Sidebar from "../components/dashboard/Sidebar";
 import Header from "../components/dashboard/Header";
 
 function DashboardLayout() {
-    const [sidebarOpen, setSidebarOpen] =
-        useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const [darkMode, setDarkMode] = useState(() => {
-        return localStorage.getItem("theme") === "dark";
-    });
-
-    useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add("dark");
-
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-
-            localStorage.setItem("theme", "light");
-        }
-    }, [darkMode]);
     return (
-        <div className="flex min-h-screen bg-slate-50 transition-colors duration-300 dark:bg-slate-950">
+        <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
 
+            {/* Left Sidebar */}
             <Sidebar
                 isOpen={sidebarOpen}
-                onClose={() =>
-                    setSidebarOpen(false)
-                }
+                onClose={() => setSidebarOpen(false)}
             />
 
-            <div className="flex min-w-0 flex-1 flex-col">
+            {/* Right Side */}
+            <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
 
+                {/* Header */}
                 <Header
-                    onMenuClick={() =>
-                        setSidebarOpen(true)
-                    }
-                    darkMode={darkMode}
-                    setDarkMode={setDarkMode}
+                    onMenuClick={() => setSidebarOpen(true)}
                 />
 
-                <main className="flex-1 p-4 transition-colors duration-300 sm:p-6 lg:p-8">
+                {/* Main Content - Independent Scroll */}
+                <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 lg:p-8">
                     <Outlet />
                 </main>
 
             </div>
-
         </div>
     );
 }

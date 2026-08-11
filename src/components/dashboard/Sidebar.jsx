@@ -88,28 +88,33 @@ function Sidebar({ isOpen, onClose }) {
 
             <aside
                 className={`
-          fixed
-          left-0
-          top-0
-          z-50
-          flex
-          h-screen
-          w-72
-          flex-col
-          border-r
-          border-slate-200
-          bg-white
-          transition-transform
-          duration-300
-          lg:static
-          lg:z-auto
-          lg:translate-x-0
-          ${isOpen
+        fixed
+        left-0
+        top-0
+        z-50
+        flex
+        h-screen
+        w-72
+        flex-col
+        overflow-y-auto
+        overflow-x-hidden
+        border-r
+        border-slate-200
+        bg-white
+        transition-transform
+        duration-300
+        lg:static
+        lg:z-auto
+        lg:translate-x-0
+        dark:border-slate-800
+        dark:bg-slate-900
+        ${isOpen
                         ? "translate-x-0"
                         : "-translate-x-full"
                     }
-        `}
+    `}
             >
+
                 {/* Logo */}
 
                 <div className="flex h-20 items-center justify-between border-b border-slate-100 px-6">
@@ -140,7 +145,7 @@ function Sidebar({ isOpen, onClose }) {
 
                 {/* Navigation */}
 
-                <nav className="flex-1 overflow-y-auto px-4 py-6">
+                <nav className="px-4 py-6">
                     <p className="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
                         Main Menu
                     </p>
